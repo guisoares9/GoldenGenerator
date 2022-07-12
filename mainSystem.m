@@ -25,9 +25,9 @@ function dT = mainSystem(t, T)
     T_sen_res = T(20);
 
     %Exercício 2 (Comentar Pwr = Power(t))
-%     Pwr = 50;
+     Pwr = 50e3;
 
-    Pwr = Power(t);
+    %Pwr = Power(t);
 
     %Exercício 3a)
 %     if(t<=43200)            %12h em segundos
@@ -49,6 +49,12 @@ function dT = mainSystem(t, T)
     T_medPAR_mot_Cor = (T_parSul + T_parLeste_mot + T_parOeste_mot + T_parTeto_mot + T_parChao_mot)/5;
 
     T_medPAR_res = (T_parChao_res + T_parTeto_res + T_parOeste_res + T_parLeste_res + T_parNorte + T_CorFog_res)/6;
+    T_medPAR_res_N = (T_parLeste_res + T_parOeste_res + T_parTeto_res + T_parChao_res + T_CorFog_res)/5;
+    T_medPAR_res_L = (T_parNorte + T_parOeste_res + T_parTeto_res + T_parChao_res + T_CorFog_res)/5;
+    T_medPAR_res_O = (T_parNorte + T_parLeste_res + T_parTeto_res + T_parChao_res + T_CorFog_res)/5;
+    T_medPAR_res_T = (T_parNorte + T_parLeste_res + T_parOeste_res + T_parChao_res + T_CorFog_res)/5;
+    T_medPAR_res_C = (T_parNorte + T_parLeste_res + T_parOeste_res + T_parTeto_res + T_CorFog_res)/5;
+    T_medPAR_res_Cor = (T_parNorte + T_parLeste_res + T_parOeste_res + T_parTeto_res + T_parChao_res)/5;
 
     if t<=18*3600 && t>=6*3600 
 
@@ -91,13 +97,13 @@ function dT = mainSystem(t, T)
     dT_CHAO_mot = Par_CHAO_mot(T_parChao_mot, T_ar_mot, T_medMBG, T_medPAR_mot_C, F_mot, m_par_mot, A_par/6);
 
     %Paredes do compartimento do reservatório de diesel
-    dT_ParNorte = Par_N(T_parNorte, G_sol, T_ambient, T_ar_res, T_res, F_res_m_cr);
-    dT_ParLESTE_res = Par_LESTE_res(T_parLeste_res, G_sol, T_ambient, T_ar_res, T_res, F_res_M_cr, cos_leste, h_nat_v);
-    dT_ParOESTE_res = Par_LESTE_res(T_parOeste_res, G_sol, T_ambient, T_ar_res, T_res, F_res_M_cr, cos_oeste, h_nat_v);
-    dT_ParTETO_res = Par_LESTE_res(T_parTeto_res, G_sol, T_ambient, T_ar_res, T_res, F_res_M_cr, cos_teto, h_nat_h);
-    dT_CorFog_res = Corta_Fogo_res(T_CorFog_res, T_ar_res, T_res, F_res_m_cr, T_CorFog_mot);
+    dT_ParNorte = Par_N(T_parNorte, G_sol, T_ambient, T_ar_res, T_res, T_medPAR_res_N, F_res_m_cr);
+    dT_ParLESTE_res = Par_LESTE_res(T_parLeste_res, G_sol, T_ambient, T_ar_res, T_res, T_medPAR_res_L, F_res_M_cr, cos_leste, h_nat_v);
+    dT_ParOESTE_res = Par_LESTE_res(T_parOeste_res, G_sol, T_ambient, T_ar_res, T_res, T_medPAR_res_O, F_res_M_cr, cos_oeste, h_nat_v);
+    dT_ParTETO_res = Par_LESTE_res(T_parTeto_res, G_sol, T_ambient, T_ar_res, T_res, T_medPAR_res_T, F_res_M_cr, cos_teto, h_nat_h);
+    dT_CorFog_res = Corta_Fogo_res(T_CorFog_res, T_ar_res, T_res, F_res_m_cr, T_medPAR_res_Cor, T_CorFog_mot);
     dT_Res_diesel = Res_diesel(T_res, T_parLeste_res, T_parOeste_res, T_parTeto_res, T_parChao_res, T_parNorte, T_CorFog_res, T_ar_res);
-    dT_CHAO_res = Par_CHAO_res(T_parChao_res, T_ar_res, T_res, F_res_M_cr);
+    dT_CHAO_res = Par_CHAO_res(T_parChao_res, T_ar_res, T_res, T_medPAR_res_C, F_res_M_cr);
     dT_Ar_res = Ar_res(T_ar_res, T_ambient, T_res, T_medPAR_res, T_sen_res);
     dT_sensor_res = T_sensor_mot(T_sen_res,T_ar_res, tau_res);
 

@@ -6,7 +6,7 @@ clear all
 %Exercçio 2 (das 6h às 6h do outro dia)
 %t = linspace(6*3600, 30*3600, 1000)
 
-t = linspace(0, 24*3600, 1000);
+t = linspace(6*3600, 36*3600, 24000);
 
 global m_sen m_g cp_bat cp_sen cp_g tau A_mot cp_mot m_mot eps ...
     sigma UA_rad m_ar m_dot_mot m_dot_res h_par A_par A_g A_bat h_mot ...
