@@ -15,6 +15,7 @@ global m_sen m_g cp_bat cp_sen cp_g tau A_mot cp_mot m_mot eps ...
     k_la_roc x_la_roc A_par_res At_l At_f h1 h2 F_res_m_rc F_res_m_cr ...
     F_res_M_rc F_res_M_cr tau_res S_res S_mot k_chao T_chao;
 
+%Exercício 4) 
 T_chao = 23+273;
 k_chao = 1;
 S_res = 6.8;
@@ -35,6 +36,7 @@ h_par = 4.19;
 m_ar = 17;
 m_dot_mot = 20;
 m_dot_res = 20;
+%Ex 3c) m_dot_res = 2e-3
 A_mot = 2;
 cp_mot = 600;
 m_mot = 400;
@@ -43,6 +45,7 @@ cp_res = 1800;
 eps = 0.9;
 sigma = 5.67e-8;
 UA_rad = 1000;
+%Exercício 4 UA = 2000;
 h_bat = 13.9;
 h_g = 11.19;
 h_mot = 8.92;

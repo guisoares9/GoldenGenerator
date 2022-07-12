@@ -6,15 +6,16 @@ clear all
 %Exercçio 2 (das 6h às 6h do outro dia)
 %t = linspace(6*3600, 30*3600, 1000)
 
-t = linspace(6*3600, 36*3600, 24000);
+t = linspace(6*3600, 30*3600, 24000);
 
 global m_sen m_g cp_bat cp_sen cp_g tau A_mot cp_mot m_mot eps ...
     sigma UA_rad m_ar m_dot_mot m_dot_res h_par A_par A_g A_bat h_mot ...
     h_g h_bat m_bat A_res m_res cp_res h_nat_v h_nat_h F_mot ...
     T_ceu A_par_LOTC_res alfa m_par_mot m_par_res cp_par R_cont_res_chao...
     k_la_roc x_la_roc A_par_res At_l At_f h1 h2 F_res_m_rc F_res_m_cr ...
-    F_res_M_rc F_res_M_cr tau_res S_res S_mot k_chao T_chao;
+    F_res_M_rc F_res_M_cr tau_res S_res S_mot k_chao T_chao IsOn;
 
+%Exercício 4) IsOn = 1;
 T_chao = 23+273;
 k_chao = 1;
 S_res = 6.8;
@@ -35,6 +36,7 @@ h_par = 4.19;
 m_ar = 17;
 m_dot_mot = 20;
 m_dot_res = 20;
+%Ex 3c) m_dot_res = 2e-3
 A_mot = 2;
 cp_mot = 600;
 m_mot = 400;
@@ -43,6 +45,7 @@ cp_res = 1800;
 eps = 0.9;
 sigma = 5.67e-8;
 UA_rad = 1000;
+%Exercício 4 UA = 2000;
 h_bat = 13.9;
 h_g = 11.19;
 h_mot = 8.92;
