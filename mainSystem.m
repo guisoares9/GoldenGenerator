@@ -1,7 +1,7 @@
 function dT = mainSystem(t, T)
 
     global A_par F_mot m_par_mot h_nat_v h_nat_h F_res_m_cr F_res_M_cr tau...
-        tau_res UA_rad m_dot_mot m_dot_mot IsOn;
+        tau_res UA_rad  IsOn;
 
     T_mot = T(1);
     T_ar_mot = T(2);
@@ -35,18 +35,33 @@ function dT = mainSystem(t, T)
 %         UA_rad = 100;
 %     end
 
-    %Exercício 4 (Lembrar de comentar a potência e ativar a potência globa
+    %Exercício 4
+% 
+% if( IsOn == 0 )
+%     if(T_sen < 80+273)
+%         UA_rad = 0;
+%     elseif(T_sen > 100+273)
+%         UA_rad = 2e3;
+%         IsOn = 1;
+%     end
+% else
+%     if(T_sen > 100+273)
+%         UA_rad = 2e3;
+%         elseif(T_sen < 80+273)
+%         UA_rad = 0;
+%         IsOn = 0;
+%     end
+% end    
 
 %     if(IsOn == 1){
-%         if(T_mot < 80){
+%         if(T_mot < 80+273){
 %             IsOn = 0;
-%             Pwr = 0;
+%             UA_rad = 0;
 %           }
 %       }
 %       if(IsOn == 0){
 %           if(T_mot > 100){
-%               IsOn = 1;
-%               Pwr = 50e3;
+%               UA_rad = 2e3;
 %           }
 %       }
 %     }

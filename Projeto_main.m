@@ -45,13 +45,16 @@ cp_res = 1800;
 eps = 0.9;
 sigma = 5.67e-8;
 UA_rad = 1000;
-%Exercício 4 UA = 2000;
+%Exercício 4
+%UA_rad = 2000;
 h_bat = 13.9;
 h_g = 11.19;
 h_mot = 8.92;
 m_sen = 1e-2;
 cp_sen =500;
 tau = 10; %[s]
+%Exercício 4d) comentar tau acima
+%tau = 30;
 tau_res = 5*60;
 m_bat = 40;
 m_g = 100;
